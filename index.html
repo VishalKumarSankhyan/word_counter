@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <title>Word Counter</title>
+    <link rel="shortcut icon" href="word counter.png" type="image/x-icon">
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* min-width: 390px; */
+
+            min-height: 380px;
+            min-width: 300px;
+
+            padding: 25px;
+        }
+        .Container{
+            max-width: 500px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .Container > div {
+            background-color:blue;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: center;
+        }
+        .Container > div > p {
+            margin: 0px 10px;
+            text-align: center;
+        }
+
+        .Container > textarea {
+            outline-color: blue;
+            border-radius: 0px;
+            resize: none;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="Container">
+        <div>
+            <h1>Word Counter</h1>
+        </div>
+        <textarea id="textarea" rows="14"></textarea>
+        <div>
+            <p>Word Count - <span id="word_count">0</span></p>
+            <p>Character Count - <span id="character_count">0</span></p>
+        </div>
+    </section>
+
+
+    <script>
+        let textarea = document.getElementById("textarea");
+        let character_count = document.getElementById("character_count"); 
+        let word_count = document.getElementById("word_count");
+
+        textarea.addEventListener("input",()=>{
+            let input = textarea.value;
+            character_count.innerText = input.length; 
+
+            input = input.trim();
+            let input_arr = input.split(" ");
+
+            input_arr = input_arr.filter((ele)=>{
+                return ele != ""
+            })
+
+            word_count.innerText = input_arr.length;
+        })
+    </script>
+</body>
+
+</html>
